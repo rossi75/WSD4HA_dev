@@ -1,0 +1,3 @@
+not for public use !
+
+May harm your system or crash the app or anything other...
