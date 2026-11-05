@@ -1,0 +1,34 @@
+name: WSD4HA_dev
+version: "0.80"
+slug: wsd_scanner
+description: "Minimal WSD-Server for Samsung C480W [and probably other Scanners]"
+url: https://github.com/rossi75/WSD4HA_dev
+webui: http://[HOST]:[PORT:8110]
+arch:
+  - amd64
+  - aarch64
+#startup: "application"
+startup: services
+#boot: "auto"
+init: false
+ports:
+  8110/tcp: 8110
+  5357/tcp: 5357
+host_network: true
+map:
+#  - config:rw
+  - share:rw
+options:
+  offline_timeout: 300
+  displayname: "Scan to Home Assistant"
+  not_idle: []
+  scan_folder: "/share/scans"
+  max_files: 50
+  log_level: []
+schema:
+  offline_timeout: int(120,3600)
+  displayname: str
+  not_idle: list(re-schedule job|forget job|try scanning anyways)
+  scan_folder: str
+  max_files: int
+  log_level: list(ERROR|WARNING|INFO|DEBUG)
