@@ -75,7 +75,7 @@ async def discovery_processor(data, addr):
         xaddr = pick_best_xaddr(xaddrs_elem.text.strip())
 
     globals.logger.debug(f"    --->   UUID: {uuid}")
-    globals.logger.info(f"    ---> Action: {action_text}")
+    globals.logger.info(f"     ---> Action: {action_text}")
     globals.logger.debug(f"    --->  Types: {types_text}")
     globals.logger.debug(f"    --->  XADDR: {xaddr}")
 
@@ -173,12 +173,12 @@ async def state_monitor():
             globals.logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [WSD:state_mon] Checking State and Timer for {scanner.friendly_name} @ {scanner.ip}...")
             status = scanner.state.value
             age = (now - scanner.last_seen).total_seconds()
-            globals.logger.info(f"   --->              state: {status} ({scanner.state})")
+            globals.logger.info(f"    --->              state: {status} ({scanner.state})")
             globals.logger.debug(f"   --->       online_since: {scanner.online_since}")
-            globals.logger.info(f"   --->          last_seen: {scanner.last_seen}          age: {age} seconds old")
+            globals.logger.info(f"    --->          last_seen: {scanner.last_seen}          age: {age} seconds old")
             if scanner.subscription_last_seen is not None:
                 subscr_age = (now - scanner.subscription_last_seen).total_seconds()
-                globals.logger.info(f"   ---> subscr_last_seen: {scanner.subscription_last_seen}          age: {subscr_age} seconds old")
+                globals.logger.info(f"    ---> subscr_last_seen: {scanner.subscription_last_seen}          age: {subscr_age} seconds old")
             
             if scanner.state.value in "online":          # auch die Sub-Stati für renew haben "online" als value
                 # 3/4-Check for subscription
