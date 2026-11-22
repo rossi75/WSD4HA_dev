@@ -115,6 +115,9 @@ async def discovery_processor(data, addr):
     elif action_text == "Bye":
         globals.logger.info(f"[WSD:BYE] Bye for uuid: {uuid}")
         if uuid in globals.SCANNERS:
+            globals.SCANNERS[uuid].state = ABSENT
+            globals.SCANNERS[uuid].online_since = None
+            globals.SCANNERS[uuid].subscription_last_seen = None
             if globals.SCANNERS[uuid].pinned is True:
                 globals.logger.info(f"[WSD:BYE] Scanner has gone, but needs to stay known because it is pinned: {globals.SCANNERS[uuid].friendly_name} ({ip})")
             else:
