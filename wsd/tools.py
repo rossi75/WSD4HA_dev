@@ -26,6 +26,9 @@
 #
 #
 # def create_pinned_scanners():
+#
+#
+# def build_heartbeat_xml(port: int):
 # ----------------------------------------------------------------------------
 
 import datetime
@@ -251,6 +254,12 @@ def create_pinned_scanners():
         SCANNERS[uuid].friendly_name = entry["friendly_name"]
         SCANNERS[uuid].pinned = True
         SCANNERS[uuid].state = STATE.PINNED
+
+# ---------------- build the heartbeat xml ----------------
+def build_heartbeat_xml(port: int) -> bytes:
+    ts = datetime.datetime.now().replace(microsecond=0).isoformat()
+    xml = f"<WSD4HA_Heartbeat><Port>{port}</Port><Timestamp>{ts}</Timestamp></WSD4HA_Heartbeat>"
+    return xml.encode("utf-8")
 
 #
 #
