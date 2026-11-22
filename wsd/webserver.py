@@ -156,7 +156,7 @@ async def status_page(request):
         if s.online_since is not None:
             scanner_list += f"<td style='text-align:center;'>{s.online_since.strftime('%Y-%m-%d %H:%M:%S')}<br>"
         else:
-            scanner_list += f"<td style='text-align:center;'>s.online_since<br>"
+            scanner_list += f"<td style='text-align:center;'>{s.online_since}<br>"
         scanner_list += f"{s.last_seen.strftime('%Y-%m-%d %H:%M:%S')}<br>"
         scanner_list += f"{s.remove_after.strftime('%Y-%m-%d %H:%M:%S') if s.remove_after else ''}</td>"
         scanner_list += f"<td style='text-align:center;'>{s.uuid}<br>"
