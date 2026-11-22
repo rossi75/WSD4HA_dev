@@ -65,7 +65,7 @@ class Scanner:
         self.offline_since = None
         self.remove_after = None
         logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [SCANNER:upd_subscr] Updated timestamps for scanner subscription {self.friendly_name} @ {self.ip} with UUID {self.uuid}")
-        logger.info(f"   ---> new subscribtion last_seen: {self.subscription_last_seen}")
+        logger.info(f"   ---> new subscription_last_seen: {self.subscription_last_seen}")
 
     # wird aufgerufen wenn ein Scanner offline gesetzt wird
     # Aufruf mit SCANNER[uuid].mark_offline()
