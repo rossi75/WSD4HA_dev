@@ -38,7 +38,7 @@
 | _ScanTicket_Dialect             | String      | [SIMPLE\|DETAIL] |
 | __State__                       |             |                  |
 | pinned                          | Boolean     |                  |
-| first_seen                      | DateTime    |                  |
+| online_since                    | DateTime    |                  |
 | last_seen                       | DateTime    |                  |
 | state                           | switch      |                  |
 | offline_since                   | DateTime    |                  |
