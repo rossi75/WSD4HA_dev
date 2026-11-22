@@ -12,13 +12,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-#COPY config.yaml /app/
-#COPY main.py /app/
-#COPY config.py /app/
-#COPY scanner.py /app/
-#COPY wsd.py /app/
-#COPY webserver.py /app/
-
 COPY config.yaml .
 COPY config.py .
 COPY globals.py .
@@ -27,11 +20,11 @@ COPY parse.py .
 COPY scan_job.py .
 COPY scanner.py .
 COPY send.py .
-COPY server.py .
+#COPY server.py .
+COPY gui.py .
 COPY templates.py .
 COPY tools.py .
 COPY translations/en.yaml ./translations
-#COPY webserver.py .
 COPY wsd.py .
 
 EXPOSE 8110
