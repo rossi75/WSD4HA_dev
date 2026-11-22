@@ -82,7 +82,7 @@ async def discovery_processor(data, addr):
     if action_text == "Hello":
         # Nur Scanner berücksichtigen
         if "ScanDeviceType" not in types_text:
-            globals.logger.info(f"[WSD:HELLO] Ignored non-scanner device UUID={uuid} Types={types_text}")
+            globals.logger.info(f"[WSD:HELLO] Ignored non-scanner device: IP={ip}, UUID={uuid}, Types={types_text}")
             return
 
         if uuid not in globals.SCANNERS:
@@ -103,12 +103,13 @@ async def discovery_processor(data, addr):
     
             # Falls der Scanner nur aus der Persistenz geladen wurde
             if s.state == globals.STATE.PINNED:
-                globals.logger.info(f"[WSD:HELLO] Pinned scanner '{s.friendly_name}' is now online.")
-                s.state = globals.STATE.ONLINE
+#                s.state = globals.STATE.ONLINE
+                s.state = globals.STATE.DISCOVERED
+                globals.logger.info(f"[WSD:HELLO] Pinned scanner '{s.friendly_name}' is now online, starting discovery process")
             else:
                 s.update()
+                globals.logger.info(f"[WSD:HELLO] Known scanner seen again: {s.friendly_name} ({ip})")
     
-            globals.logger.info(f"[WSD:HELLO] Known scanner seen again: {s.friendly_name} ({ip})")
         list_scanners()
 
     elif action_text == "Bye":
