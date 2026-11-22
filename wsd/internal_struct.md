@@ -21,6 +21,7 @@
 | uuid                            | UUID-String |                  |
 | ip                              | String      | IP Adress        |
 | __WSD Parameters__              |             |                  |
+| xaddr                           | String      |                  |
 | subscription_timeout            | Integer     |                  |
 | subscription_last_seen          | DateTime    |                  |
 | subscription_id                 | UUID-String |                  |
