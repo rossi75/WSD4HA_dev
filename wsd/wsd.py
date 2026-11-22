@@ -30,6 +30,21 @@ async def discovery_processor(data, addr):
         globals.logger.error("[WSD:dp] Exception while reading from ET")
         return
 
+    # --- own Keep-Alive, no real WSD-Traffic ---
+    if root.tag == "WSD4HA_Heartbeat":
+        ts_text = root.findtext("Timestamp")
+        port_text = root.findtext("Port")
+        try:
+            sent_at = datetime.datetime.fromisoformat(ts_text)
+            latency = (datetime.datetime.now() - sent_at).total_seconds()
+        except (TypeError, ValueError):
+            latency = None
+        globals.logger.debug(f"[WSD:Heartbeat] received Heartbeat for Port {port_text} at {sent_at} with a latency of {latency}s")
+        if port_text == "3702":
+            globals.PORT_3702_LAST_HEARTBEAT = datetime.datetime.now()
+        return
+
+    
     # UUID (without urn:uuid:)
     uuid_raw = root.find(".//wsa:Address", globals.NAMESPACES)
     uuid = None
