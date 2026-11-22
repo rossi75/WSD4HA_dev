@@ -35,7 +35,7 @@ class Scanner:
         self.ScanTicket_Dialect = None              # SIMPLE or DETAIL
 
         # Status
-        self.first_seen = datetime.datetime.now().replace(microsecond=0)
+        self.online_since = datetime.datetime.now().replace(microsecond=0)
         self.last_seen = datetime.datetime.now().replace(microsecond=0)
         self.state = STATE.DISCOVERED
         self.offline_since = None
@@ -71,7 +71,6 @@ class Scanner:
     # Aufruf mit SCANNER[uuid].mark_offline()
     def mark_absent(self):
         self.state = STATE.ABSENT
-#        if not self.offline_since:
         if not self.offline_since:
             self.offline_since = datetime.datetime.now().replace(microsecond=0)
             if self.pinned is True:
