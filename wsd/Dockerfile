@@ -20,8 +20,7 @@ COPY parse.py .
 COPY scan_job.py .
 COPY scanner.py .
 COPY send.py .
-#COPY server.py .
-COPY gui.py .
+COPY webserver.py .
 COPY templates.py .
 COPY tools.py .
 COPY translations/en.yaml ./translations
