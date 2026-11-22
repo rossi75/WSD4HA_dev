@@ -52,8 +52,11 @@ class Scanner:
         self.state = STATE.ONLINE
         self.offline_since = None
         self.remove_after = None
+        if self.online_since is Null:
+            self.online_since = datetime.datetime.now().replace(microsecond=0)
 
         logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [SCANNER:upd] Updated timestamps for {self.friendly_name} @ {self.ip} with UUID {self.uuid}")
+        logger.debug(f"   --->  online_since: {self.online_since}")
         logger.debug(f"   ---> new last_seen: {self.last_seen}")
 
     # Scannerservice ist noch online
@@ -64,7 +67,10 @@ class Scanner:
         self.state = STATE.ONLINE
         self.offline_since = None
         self.remove_after = None
+        if self.online_since is Null:
+            self.online_since = datetime.datetime.now().replace(microsecond=0)
         logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [SCANNER:upd_subscr] Updated timestamps for scanner subscription {self.friendly_name} @ {self.ip} with UUID {self.uuid}")
+        logger.debug(f"  --->  online_since: {self.online_since}")
         logger.info(f"   ---> new subscription_last_seen: {self.subscription_last_seen}")
 
     # wird aufgerufen wenn ein Scanner offline gesetzt wird
