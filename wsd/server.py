@@ -153,7 +153,7 @@ async def status_page(request):
         scanner_list += f"<td style='text-align:center;'>{s.ip}<br>{s.mac if s.mac else ''}</td>"
         scanner_list += f"<td style='text-align:center;'>{s.state.value}<br>"
         scanner_list += f"{s.subscription_last_seen.strftime('%Y-%m-%d %H:%M:%S') if s.subscription_last_seen else ''}</td>"
-        scanner_list += f"<td style='text-align:center;'>{s.first_seen.strftime('%Y-%m-%d %H:%M:%S')}<br>"
+        scanner_list += f"<td style='text-align:center;'>{s.online_since.strftime('%Y-%m-%d %H:%M:%S')}<br>"
         scanner_list += f"{s.last_seen.strftime('%Y-%m-%d %H:%M:%S')}<br>"
         scanner_list += f"{s.remove_after.strftime('%Y-%m-%d %H:%M:%S') if s.remove_after else ''}</td>"
         scanner_list += f"<td style='text-align:center;'>{s.uuid}<br>"
@@ -265,7 +265,7 @@ async def status_page(request):
             Notify
             <h2>Active Scanners:</h2>
             <table>
-                <tr><th>Pin</th><th>Name</th><th>IP<br>[MAC]</th><th>State<br>Last Subscr</th><th>First seen<br>Last seen<br>[Remove after]</th><th>UUID<br>XADDR</th><th>Subscr ID<br>Subscr EndToAddr<br>Destination Token</th><th>Manufacturer<br>Model</th><th>Firmware<br>Serial</th></tr>
+                <tr><th>Pin</th><th>Name</th><th>IP<br>[MAC]</th><th>State<br>Last Subscr</th><th>Online since<br>Last seen<br>[Remove after]</th><th>UUID<br>XADDR</th><th>Subscr ID<br>Subscr EndToAddr<br>Destination Token</th><th>Manufacturer<br>Model</th><th>Firmware<br>Serial</th></tr>
                 {scanner_list}
             </table>
             <h2>List of Scans:</h2>
