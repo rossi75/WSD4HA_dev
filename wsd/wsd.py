@@ -278,7 +278,7 @@ async def state_monitor():
             globals.logger.debug(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [WSD:sleep] waiting for pinned Scanners")
             await asyncio.sleep(20)
         else:                                                                            # Keine aktiven Scanner
-            globals.logger.debug(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [WSD:sleep] goodbye")
+            globals.logger.debug(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [WSD:sleep] goodnight")
             await asyncio.sleep(OFFLINE_TIMEOUT / 7)
 
 
