@@ -89,11 +89,6 @@ async def discovery_processor(data, addr):
             globals.SCANNERS[uuid] = Scanner(uuid=uuid, ip=ip, xaddr=xaddr)
             globals.logger.info(f"[WSD:HELLO] New Scanner: {globals.SCANNERS[uuid].uuid} ({ip})")
         else:
-#            if SCANNERS[uuid].state.value == "online":
-#                SCANNERS[uuid].update()
-#            logger.info(f"[WSD:HELLO] known Scanner seen again: {SCANNERS[uuid].friendly_name} ({ip})")
-
-
             # Bereits vorhandenen Scanner aktualisieren
             s = globals.SCANNERS[uuid]
     
@@ -103,9 +98,11 @@ async def discovery_processor(data, addr):
     
             # Falls der Scanner nur aus der Persistenz geladen wurde
             if s.state == globals.STATE.PINNED:
-#                s.state = globals.STATE.ONLINE
                 s.state = globals.STATE.DISCOVERED
                 globals.logger.info(f"[WSD:HELLO] Pinned scanner '{s.friendly_name}' is now online, starting discovery process")
+            elif s.state == globals.STATE.ABSENT:
+                s.state = globals.STATE.DISCOVERED
+                globals.logger.info(f"[WSD:HELLO] Scanner '{s.friendly_name}' is online again, starting discovery process")
             else:
                 s.update()
                 globals.logger.info(f"[WSD:HELLO] Known scanner seen again: {s.friendly_name} ({ip})")
