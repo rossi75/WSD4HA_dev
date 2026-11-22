@@ -52,7 +52,7 @@ class Scanner:
         self.state = STATE.ONLINE
         self.offline_since = None
         self.remove_after = None
-        if self.online_since is Null:
+        if self.online_since is None:
             self.online_since = datetime.datetime.now().replace(microsecond=0)
 
         logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [SCANNER:upd] Updated timestamps for {self.friendly_name} @ {self.ip} with UUID {self.uuid}")
@@ -67,7 +67,7 @@ class Scanner:
         self.state = STATE.ONLINE
         self.offline_since = None
         self.remove_after = None
-        if self.online_since is Null:
+        if self.online_since is None:
             self.online_since = datetime.datetime.now().replace(microsecond=0)
         logger.info(f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S} [SCANNER:upd_subscr] Updated timestamps for scanner subscription {self.friendly_name} @ {self.ip} with UUID {self.uuid}")
         logger.debug(f"  --->  online_since: {self.online_since}")
