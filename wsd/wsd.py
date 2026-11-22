@@ -176,7 +176,7 @@ async def state_monitor():
             globals.logger.info(f"    --->          last_seen: {scanner.last_seen}          age: {age} seconds old")
             if scanner.subscription_last_seen is not None:
                 subscr_age = (now - scanner.subscription_last_seen).total_seconds()
-                globals.logger.info(f"     ---> subscr_last_seen: {scanner.subscription_last_seen}          age: {subscr_age} seconds old")
+                globals.logger.info(f"      ---> subscr_last_seen: {scanner.subscription_last_seen}          age: {subscr_age} seconds old")
             
             if scanner.state.value in "online":          # auch die Sub-Stati für renew haben "online" als value
                 # 3/4-Check for subscription
